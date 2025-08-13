@@ -1,123 +1,101 @@
-# API Petstore
+# 🐾 Suite de Pruebas API Petstore
 
-Este proyecto utiliza la API de Petstore para gestionar mascotas. A continuación se describen los pasos para agregar, verificar, modificar y eliminar una mascota.
+Automatización de la gestión de mascotas usando la [API de Petstore](https://petstore.swagger.io/v2/).
 
-## Requisitos
+---
 
-- Acceso a la API de Petstore: [https://petstore.swagger.io/v2/](https://petstore.swagger.io/v2/)
-- Karate Framework para la ejecución de pruebas.
+## 🔗 Repositorio
 
-## Pasos
+- **GitHub Repository:** [Petstore_Swagger_API](https://github.com/HarinChC/Petstore_Swagger_API.git)
 
-### 1. Adición de una mascota nueva
+---
 
-Agrega una nueva mascota con el siguiente formato de nombre: `Pug_Luna`.
+## 🔗 Referencia de la API
 
-**Request:**
+- **URL Base:** `https://petstore.swagger.io/v2/`
+- **Swagger:** [Petstore Swagger](https://petstore.swagger.io/#/pet/updatePet)
 
-```http
-POST /pet
-Content-Type: application/json
+---
+## 🚀 Uso
 
-{
-    "id": 2000004,
-    "category": {
-        "id": 1,
-        "name": "Salvaje"
-    },
-    "name": "Pug_Luna",
-    "photoUrls": ["https://photo.url/badpets.jpg"],
-    "tags": [{"id": 12345, "name": "coco"}],
-    "status": "available"
-}
-```
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/HarinChC/Petstore_Swagger_API.git
+---
+## 🧪 Casos de Prueba
 
-### 2. Verificación de que la mascota está agregada correctamente
+1. 🐶 **Agregar una nueva mascota**
+   - **Descripción:** Este caso de prueba envía una solicitud POST a la API para agregar una nueva mascota.
+   - **Datos enviados:**
+     ```json
+     {
+       "id": 12345,
+       "name": "Pug_Luna",
+       "status": "available"
+     }
+     ```
+   - **Objetivo:** Verificar que la API registre correctamente una nueva mascota con el estado `200`.
 
-Verifica que la mascota se haya agregado correctamente consultando su información.
+2. 🔍 **Verificar la adición**
+   - **Descripción:** Este caso de prueba envía una solicitud GET para recuperar la información de la mascota recién agregada.
+   - **Datos esperados:**
+     ```json
+     {
+       "id": 12345,
+       "name": "Pug_Luna",
+       "status": "available"
+     }
+     ```
+   - **Objetivo:** Confirmar que la mascota fue agregada correctamente y que los datos coinciden con los enviados.
 
-**Request:**
+3. ✏️ **Modificar el nombre**
+   - **Descripción:** Este caso de prueba envía una solicitud PUT para actualizar el nombre de la mascota.
+   - **Datos enviados:**
+     ```json
+     {
+       "id": 12345,
+       "name": "PugCarlino_Luna",
+       "status": "available"
+     }
+     ```
+   - **Objetivo:** Verificar que la API permita actualizar el nombre de la mascota.
 
-```http
-GET /pet/2000004
-```
+4. ✅ **Verificar la modificación**
+   - **Descripción:** Este caso de prueba envía una solicitud GET para consultr la información actualizada de la mascota recien modificada.
+   - **Datos esperados:**
+     ```json
+     {
+       "id": 12345,
+       "name": "PugCarlino_Luna",
+       "status": "available"
+     }
+     ```
+   - **Objetivo:** Confirmar que el nombre de la mascota fue actualizado correctamente.
 
-**Expected Response:**
+5. 🗑️ **Eliminar la mascota**
+   - **Descripción:** Este caso de prueba envía una solicitud DELETE para eliminar la mascota registrada.
+   - **Datos enviados:**
+     ```json
+     {
+       "id": 12345
+     }
+     ```
+   - **Objetivo:** Verificar que la API elimine correctamente la mascota.
 
-```json
-{
-    "id": 2000004,
-    "category": {
-        "id": 1,
-        "name": "Salvaje"
-    },
-    "name": "Pug_Luna",
-    "photoUrls": ["https://photo.url/badpets.jpg"],
-    "tags": [{"id": 12345, "name": "coco"}],
-    "status": "available"
-}
-```
+---
 
-### 3. Modificación del nombre de la mascota
+## 📦 Estructura del Proyecto
 
-Modifica el nombre de la mascota a `PugCarlino_Luna`.
+| Ruta                                       | Descripción                                 |
+|--------------------------------------------|---------------------------------------------|
+| `src/test/java/petstore/pets/`             | Runners para ejecutar las pruebas           |
+| `src/test/res../petstore/feature/`         | Features de pruebas automatizadas           |
+| `src/test/resources/petstore/Datos/*.json` | Archivos JSON con datos de prueba           |
+| `src/test/resources/logback-test.xml`      | Configuración de logging para las pruebas   |
+| `build.gradle`                             | Configuración de compilación y dependencias |
+| `README.md`                                | Documentación del proyecto                  |
 
-**Request:**
 
-```http
-PUT /pet
-Content-Type: application/json
 
-{
-    "id": 2000004,
-    "category": {
-        "id": 1,
-        "name": "Salvaje"
-    },
-    "name": "PugCarlino_Luna",
-    "photoUrls": ["https://photo.url/badpets.jpg"],
-    "tags": [{"id": 12345, "name": "coco"}],
-    "status": "available"
-}
-```
 
-### 4. Verificación de que el nombre de la mascota fue modificado correctamente
 
-Verifica que el nombre de la mascota se haya actualizado correctamente.
-
-**Request:**
-
-```http
-GET /pet/2000004
-```
-
-**Expected Response:**
-
-```json
-{
-    "id": 2000004,
-    "category": {
-        "id": 1,
-        "name": "Salvaje"
-    },
-    "name": "PugCarlino_Luna",
-    "photoUrls": ["https://photo.url/badpets.jpg"],
-    "tags": [{"id": 12345, "name": "coco"}],
-    "status": "available"
-}
-```
-
-### 5. Eliminación de la mascota agregada
-
-Elimina la mascota que se agregó anteriormente.
-
-**Request:**
-
-```http
-DELETE /pet/2000004
-```
-
-## Conclusión
-
-Estos pasos ilustran cómo agregar, verificar, modificar y eliminar una mascota utilizando la API de Petstore. Asegúrate de realizar cada paso en el orden correcto para garantizar que las operaciones se completen correctamente.
-```
