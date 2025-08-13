@@ -83,19 +83,69 @@ Automatización de la gestión de mascotas usando la [API de Petstore](https://p
    - **Objetivo:** Verificar que la API elimine correctamente la mascota.
 
 ---
+## 📁 Estructura de Carpetas y Archivos
 
-## 📦 Estructura del Proyecto
+```
+src/
+└── test/
+    ├── java/
+    │   └── petstore.pets/
+    │       ├── ActualizarNombreMascota_Runner
+    │       ├── AgregarMascota_Runner
+    │       ├── ConsultarMascota_Runner
+    │       ├── ConsultarMascotaID_Runner
+    │       ├── EliminarMascota_Runner
+    │       ├── karate-config.js
+    │       └── logback-test.xml
+    └── resources/
+        └── petstore/
+            ├── Datos/
+            │   ├── mascotaActualizarNombre.json
+            │   └── mascotas.json
+            └── features/
+                ├── ActualizarNombreMascota.feature
+                ├── AgregarMascota.feature
+                ├── ConsultarMascota.feature
+                ├── ConsultarMascotaID.feature
+                └── EliminarMascota.feature
+```
 
-| Ruta                                       | Descripción                                 |
-|--------------------------------------------|---------------------------------------------|
-| `src/test/java/petstore/pets/`             | Runners para ejecutar las pruebas           |
-| `src/test/res../petstore/feature/`         | Features de pruebas automatizadas           |
-| `src/test/resources/petstore/Datos/*.json` | Archivos JSON con datos de prueba           |
-| `src/test/resources/logback-test.xml`      | Configuración de logging para las pruebas   |
-| `build.gradle`                             | Configuración de compilación y dependencias |
-| `README.md`                                | Documentación del proyecto                  |
+---
 
+## 📂 Descripción de Carpetas y Archivos
 
+### `test/java/petstore.pets/`
+- **Runners (`*_Runner`):**  
+  Clases Java que ejecutan los archivos `.feature` de Karate, normalmente usando JUnit.
+    - `ActualizarNombreMascota_Runner`
+    - `AgregarMascota_Runner`
+    - `ConsultarMascota_Runner`
+    - `ConsultarMascotaID_Runner`
+    - `EliminarMascota_Runner`
+- **karate-config.js:**  
+  Archivo de configuración global para inicializar variables, URLs, timeouts y settings de Karate.
+- **logback-test.xml:**  
+  Configuración de logging para los reportes de ejecución de pruebas.
+
+### `test/resources/petstore/Datos/`
+- **Archivos de datos (`*.json`):**
+    - `mascotaActualizarNombre.json`: Datos específicos para pruebas de actualización de nombre de mascota.
+    - `mascotas.json`: Datos generales de mascotas utilizados por diferentes escenarios de prueba.
+
+### `test/resources/petstore/features/`
+- **Features (`*.feature`):**  
+  Archivos escritos en Gherkin con los escenarios de prueba automatizados.
+    - `ActualizarNombreMascota.feature`
+    - `AgregarMascota.feature`
+    - `ConsultarMascota.feature`
+    - `ConsultarMascotaID.feature`
+    - `EliminarMascota.feature`
+
+---
+    
+## 🚀 Ejecución de pruebas
+
+Puedes ejecutar las pruebas desde tu IDE (IntelliJ, Eclipse, etc.) usando los runners, o desde la terminal con Gradle/Maven según tu configuración.
 
 
 
