@@ -1,63 +1,101 @@
 # 🐾 Suite de Pruebas API Petstore
 
-Automatizacion de la gestión de mascotas usando la [API de Petstore](https://petstore.swagger.io/v2/).
+Automatización de la gestión de mascotas usando la [API de Petstore](https://petstore.swagger.io/v2/).
 
-### 🔗Repository: https://github.com/HarinChC/Petstore_Swagger_API.git
+---
 
+## 🔗 Repositorio
 
-## 🧪 Casos de Prueba
+- **GitHub Repository:** [Petstore_Swagger_API](https://github.com/HarinChC/Petstore_Swagger_API.git)
 
-1. 🐶 **Agregar una nueva mascota**  
-   Añade una mascota con el nombre `Pug_Luna`.
-
-
-2. 🔍 **Verificar la adición**  
-   Confirma que la mascota fue agregada correctamente.
-
-
-3. ✏️ **Modificar el nombre**  
-   Cambia el nombre de la mascota a `PugCarlino_Luna`.
-
-
-4. ✅ **Verificar la modificación**  
-   Asegura que el nombre fue actualizado correctamente.
-
-
-5. 🗑️ **Eliminar la mascota**  
-   Elimina la mascota agregada.
-
-## 📦 Estructura del Proyecto
-
-| Ruta                                      | Descripción                                 |
-|--------------------------------------------|---------------------------------------------|
-| `src/main/java/`                          | Código fuente Java                          |
-| `src/test/java/`                          | Código de pruebas                           |
-| `src/test/resources/petstore/pets/pet.json`| Datos de prueba para mascotas               |
-| `build.gradle`                            | Configuración de compilación Gradle         |
-| `README.md`                               | Documentación del proyecto                  |
+---
 
 ## 🔗 Referencia de la API
 
 - **URL Base:** `https://petstore.swagger.io/v2/`
 - **Swagger:** [Petstore Swagger](https://petstore.swagger.io/#/pet/updatePet)
 
-## 🛠️ Tecnologías
-
-- Java
-- JavaScript
-- Gradle
-
+---
 ## 🚀 Uso
 
-1. Clona el repositorio.
-2. Configura el entorno según sea necesario.
-3. Ejecuta la suite de pruebas usando Gradle o tu IDE preferido.
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/HarinChC/Petstore_Swagger_API.git
+---
+## 🧪 Casos de Prueba
 
-## 📁 Datos de Prueba
+1. 🐶 **Agregar una nueva mascota**
+   - **Descripción:** Este caso de prueba envía una solicitud POST a la API para agregar una nueva mascota.
+   - **Datos enviados:**
+     ```json
+     {
+       "id": 12345,
+       "name": "Pug_Luna",
+       "status": "available"
+     }
+     ```
+   - **Objetivo:** Verificar que la API registre correctamente una nueva mascota con el estado `200`.
 
-Ejemplo: `src/test/resources/petstore/pets/pet.json`
+2. 🔍 **Verificar la adición**
+   - **Descripción:** Este caso de prueba envía una solicitud GET para recuperar la información de la mascota recién agregada.
+   - **Datos esperados:**
+     ```json
+     {
+       "id": 12345,
+       "name": "Pug_Luna",
+       "status": "available"
+     }
+     ```
+   - **Objetivo:** Confirmar que la mascota fue agregada correctamente y que los datos coinciden con los enviados.
 
-## 📝 Notas
+3. ✏️ **Modificar el nombre**
+   - **Descripción:** Este caso de prueba envía una solicitud PUT para actualizar el nombre de la mascota.
+   - **Datos enviados:**
+     ```json
+     {
+       "id": 12345,
+       "name": "PugCarlino_Luna",
+       "status": "available"
+     }
+     ```
+   - **Objetivo:** Verificar que la API permita actualizar el nombre de la mascota.
 
-- Asegúrate de tener acceso a la API de Petstore.
-- Consulta Swagger para los formatos de solicitud y respuesta.
+4. ✅ **Verificar la modificación**
+   - **Descripción:** Este caso de prueba envía una solicitud GET para consultr la información actualizada de la mascota recien modificada.
+   - **Datos esperados:**
+     ```json
+     {
+       "id": 12345,
+       "name": "PugCarlino_Luna",
+       "status": "available"
+     }
+     ```
+   - **Objetivo:** Confirmar que el nombre de la mascota fue actualizado correctamente.
+
+5. 🗑️ **Eliminar la mascota**
+   - **Descripción:** Este caso de prueba envía una solicitud DELETE para eliminar la mascota registrada.
+   - **Datos enviados:**
+     ```json
+     {
+       "id": 12345
+     }
+     ```
+   - **Objetivo:** Verificar que la API elimine correctamente la mascota.
+
+---
+
+## 📦 Estructura del Proyecto
+
+| Ruta                                       | Descripción                                 |
+|--------------------------------------------|---------------------------------------------|
+| `src/test/java/petstore/pets/`             | Runners para ejecutar las pruebas           |
+| `src/test/res../petstore/feature/`         | Features de pruebas automatizadas           |
+| `src/test/resources/petstore/Datos/*.json` | Archivos JSON con datos de prueba           |
+| `src/test/resources/logback-test.xml`      | Configuración de logging para las pruebas   |
+| `build.gradle`                             | Configuración de compilación y dependencias |
+| `README.md`                                | Documentación del proyecto                  |
+
+
+
+
+
